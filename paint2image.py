@@ -51,7 +51,7 @@ if __name__ == '__main__':
             print(in_s2)
             print(in_s2.shape)
             opt.gen_start_scale=0
-            in_s = torch.full(in_s2.shape, 0, device=opt.device)
+            in_s = torch.full(in_s2.shape, 1, device=opt.device)
 
             if opt.quantization_flag:
                 opt.mode = 'paint_train'
