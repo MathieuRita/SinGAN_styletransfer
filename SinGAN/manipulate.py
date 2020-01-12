@@ -129,7 +129,7 @@ def SinGAN_generate(Gs,Zs,reals,NoiseAmp,opt,in_s=None,scale_v=1,scale_h=1,n=0,g
                 z_curr = Z_opt
 
             #z_in = noise_amp*(z_curr)+I_prev
-            z_in = 5*noise_amp*(z_curr)+I_prev
+            z_in = 2*noise_amp*(z_curr)+I_prev
             I_curr = G(z_in.detach(),I_prev)
 
             if n == len(reals)-1:
