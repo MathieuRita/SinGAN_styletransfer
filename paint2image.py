@@ -50,7 +50,7 @@ if __name__ == '__main__':
             in_s2 = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
             opt.gen_start_scale=0
             in_s = torch.full(reals[0].shape, 0, device=opt.device)
-            in_s[0,:,0:7,0:7]=0.1
+            in_s[0,:,0:7,0:7]=0.5
 
             print(in_s2.shape)
             print(in_s.shape)
