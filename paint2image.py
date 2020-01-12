@@ -50,6 +50,9 @@ if __name__ == '__main__':
             #in_s = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
             opt.gen_start_scale=0
             in_s = torch.full(reals[0].shape, 0, device=opt.device)
+            print(in_s)
+            print(functions.convert_image_np(in_s.detach()))
+            print(in_s.shape)
             plt.imsave('input_random', functions.convert_image_np(in_s.detach()), vmin=0, vmax=1)
 
             if opt.quantization_flag:
