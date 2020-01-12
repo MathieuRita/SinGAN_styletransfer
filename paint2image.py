@@ -48,10 +48,12 @@ if __name__ == '__main__':
             in_s = in_s[:, :, :reals[n - 1].shape[2], :reals[n - 1].shape[3]]
             in_s = imresize(in_s, 1 / opt.scale_factor, opt)
             in_s2 = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
-            print(in_s2)
-            print(in_s2.shape)
             opt.gen_start_scale=0
-            in_s = torch.full(in_s2.shape, 1, device=opt.device)
+            print(in_s2.shape)
+            in_s = torch.full(reals[0].shape, 0, device=opt.device)
+
+            print(in_s2.shape)
+            print(in_s.shape)
 
             if opt.quantization_flag:
                 opt.mode = 'paint_train'
