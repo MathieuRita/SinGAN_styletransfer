@@ -128,7 +128,8 @@ def SinGAN_generate(Gs,Zs,reals,NoiseAmp,opt,in_s=None,scale_v=1,scale_h=1,n=0,g
             if n < gen_start_scale:
                 z_curr = Z_opt
 
-            z_in = noise_amp*(z_curr)+I_prev
+            #z_in = noise_amp*(z_curr)+I_prev
+            z_in = I_prev
             I_curr = G(z_in.detach(),I_prev)
 
             if n == len(reals)-1:
@@ -147,4 +148,3 @@ def SinGAN_generate(Gs,Zs,reals,NoiseAmp,opt,in_s=None,scale_v=1,scale_h=1,n=0,g
             images_cur.append(I_curr)
         n+=1
     return I_curr.detach()
-
