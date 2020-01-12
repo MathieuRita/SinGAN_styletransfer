@@ -52,7 +52,7 @@ if __name__ == '__main__':
             in_s = torch.full(reals[0].shape, 0, device=opt.device)
             print(in_s)
             print(functions.convert_image_np(in_s.detach()))
-            print(in_s.shape)
+            print(functions.convert_image_np(in_s.detach()).shape)
             plt.imsave('input_random', functions.convert_image_np(in_s.detach()), vmin=0, vmax=1)
 
             if opt.quantization_flag:
