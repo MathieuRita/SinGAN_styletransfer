@@ -234,6 +234,7 @@ def load_trained_pyramid(opt, mode_='train'):
     if (mode == 'animation_train') | (mode == 'SR_train') | (mode == 'paint_train'):
         opt.mode = mode
     dir = generate_dir2save(opt)
+    print(dir)
     if(os.path.exists(dir)):
         Gs = torch.load('%s/Gs.pth' % dir)
         Zs = torch.load('%s/Zs.pth' % dir)
@@ -352,5 +353,3 @@ def dilate_mask(mask,opt):
     plt.imsave('%s/%s_mask_dilated.png' % (opt.ref_dir, opt.ref_name[:-4]), convert_image_np(mask), vmin=0,vmax=1)
     mask = (mask-mask.min())/(mask.max()-mask.min())
     return mask
-
-
