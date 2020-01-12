@@ -52,9 +52,6 @@ if __name__ == '__main__':
             #in_s = torch.full(reals[0].shape, 0, device=opt.device)
             #in_s[0,:,:20,:]=0.2
 
-            print(in_s2.shape)
-            print(in_s.shape)
-
             if opt.quantization_flag:
                 opt.mode = 'paint_train'
                 dir2trained_model = functions.generate_dir2save(opt)
@@ -78,7 +75,6 @@ if __name__ == '__main__':
                 else:
                     train_paint(opt, Gs, Zs, reals, NoiseAmp, centers, opt.paint_start_scale)
                     opt.mode = 'paint2image'
-            print(opt.ker_size)
             #out = SinGAN_generate(Gs, Zs, reals, NoiseAmp, opt, in_s, num_samples=1)
             out = SinGAN_generate(Gs[n:], Zs[n:], reals, NoiseAmp[n:], opt, in_s, n=n, num_samples=1)
             plt.imsave('%s/start_scale=%d.png' % (dir2save, opt.paint_start_scale), functions.convert_image_np(out.detach()), vmin=0, vmax=1)
