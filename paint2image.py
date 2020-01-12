@@ -44,10 +44,15 @@ if __name__ == '__main__':
 
             N = len(reals) - 1
             n = opt.paint_start_scale
-            in_s = imresize(ref, pow(opt.scale_factor, (N - n + 1)), opt)
-            in_s = in_s[:, :, :reals[n - 1].shape[2], :reals[n - 1].shape[3]]
-            in_s = imresize(in_s, 1 / opt.scale_factor, opt)
-            in_s = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
+            #in_s = imresize(ref, pow(opt.scale_factor, (N - n + 1)), opt)
+            #in_s = in_s[:, :, :reals[n - 1].shape[2], :reals[n - 1].shape[3]]
+            #in_s = imresize(in_s, 1 / opt.scale_factor, opt)
+            #in_s = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
+	    real = functions.read_image(opt)
+            functions.adjust_scales2image(real, opt)
+            Gs, Zs, reals, NoiseAmp = functions.load_trained_pyramid(opt)
+            in_s = functions.generate_in2coarsest(reals,1,1,opt)
+
             if opt.quantization_flag:
                 opt.mode = 'paint_train'
                 dir2trained_model = functions.generate_dir2save(opt)
