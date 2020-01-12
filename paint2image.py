@@ -48,7 +48,7 @@ if __name__ == '__main__':
             #in_s = in_s[:, :, :reals[n - 1].shape[2], :reals[n - 1].shape[3]]
             #in_s = imresize(in_s, 1 / opt.scale_factor, opt)
             #in_s = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
-	    real = functions.read_image(opt)
+            real = functions.read_image(opt)
             functions.adjust_scales2image(real, opt)
             Gs, Zs, reals, NoiseAmp = functions.load_trained_pyramid(opt)
             in_s = functions.generate_in2coarsest(reals,1,1,opt)
@@ -78,8 +78,3 @@ if __name__ == '__main__':
                     opt.mode = 'paint2image'
             out = SinGAN_generate(Gs[n:], Zs[n:], reals, NoiseAmp[n:], opt, in_s, n=n, num_samples=1)
             plt.imsave('%s/start_scale=%d.png' % (dir2save, opt.paint_start_scale), functions.convert_image_np(out.detach()), vmin=0, vmax=1)
-
-
-
-
-
