@@ -49,7 +49,7 @@ if __name__ == '__main__':
             in_s = imresize(in_s, 1 / opt.scale_factor, opt)
             in_s2 = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
             opt.gen_start_scale=0
-            in_s = torch.full(reals[0].shape, 2, device=opt.device)
+            in_s = torch.full(reals[0].shape, 0, device=opt.device)
 
             print(in_s2.shape)
             print(in_s.shape)
