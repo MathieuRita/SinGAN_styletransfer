@@ -44,16 +44,13 @@ if __name__ == '__main__':
 
             N = len(reals) - 1
             n = opt.paint_start_scale
-            #in_s = imresize(ref, pow(opt.scale_factor, (N - n + 1)), opt)
-            #in_s = in_s[:, :, :reals[n - 1].shape[2], :reals[n - 1].shape[3]]
-            #in_s = imresize(in_s, 1 / opt.scale_factor, opt)
-            #in_s = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
+            in_s = imresize(ref, pow(opt.scale_factor, (N - n + 1)), opt)
+            in_s = in_s[:, :, :reals[n - 1].shape[2], :reals[n - 1].shape[3]]
+            in_s = imresize(in_s, 1 / opt.scale_factor, opt)
+            in_s2 = in_s[:, :, :reals[n].shape[2], :reals[n].shape[3]]
+            print(in_s2)
             opt.gen_start_scale=0
             in_s = torch.full(reals[0].shape, 0, device=opt.device)
-            print(in_s)
-            print(functions.convert_image_np(in_s.detach()))
-            print(functions.convert_image_np(in_s.detach()).shape)
-            plt.imsave('input_random', functions.convert_image_np(in_s.detach()), vmin=0, vmax=1)
 
             if opt.quantization_flag:
                 opt.mode = 'paint_train'
